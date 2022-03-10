@@ -34,6 +34,7 @@ class LoanDetailController extends Controller
     public function processdataview(){
         $columns = Schema::getColumnListing('emi_details');
         $details = (Schema::hasTable('emi_details')) ? EmiDetail::all()->toArray() : [];
+        rsort($columns);
         unset($columns[0]);
         return view('process_data')->with(['headers' => $columns,'details' => $details]);
     }
